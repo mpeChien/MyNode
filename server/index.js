@@ -6,6 +6,7 @@ import bodyParser from 'body-parser'
 import cookieParser from 'cookie-parser'
 import helmet from 'helmet'
 
+import routers from './routers'
 
 let app = express()
 
@@ -31,12 +32,5 @@ app.use(helmet())
 const server = http.createServer(app).listen("8080", "127.0.0.1")
 console.info("server start")
 
-app.set('title', "mpe tilte")
 
-
-//test
-app.get('/',(req, res) => {
-
-  res.end(`hello nodejs ${app.get('title')}`)
-
-})
+routers(app)
